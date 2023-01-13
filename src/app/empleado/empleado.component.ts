@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isIdentifier } from '@angular/compiler';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-empleado',
@@ -6,42 +7,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./empleado.component.scss']
 })
 export class EmpleadoComponent {
-  nombre="Juan";
-  apellido="Díaz";
-  private edad=18;
-  empresa="Google";
 
-  habilitacionCuadro = false;
+  nombre ="Juan";
+  apellido="Perez";
+  private  edad = 18;
+  empresa = "juataco";
 
-  usuRegistrado = true;
+  
+  usuRegistrado = false;
+  habilitacionCuadro =false;
+  textoDeRegistro="No hay nadie registrado";
 
-  textoDeRegistro = "No hay nadie registrado";
+getRegistroUsuario(value :boolean){
+  this.usuRegistrado =  !value ;
+  if (this.usuRegistrado)
+  {
+   // this.setUsuarioRegistrado();
+   this.textoDeRegistro = "EL usuairo se acaba de registrar";
+  }
+  else {
+    this.textoDeRegistro = this.textoDeRegistro;
+  }
+}
 
-  // cambiaEmpresa(event:Event) {
-  //   this.empresa = (<HTMLInputElement>event.target).value;
-  // }
 
-  getEdad() {
+getRegistroOption(event :Event){
+  
+  this.usuRegistrado =  !this.usuRegistrado ;
+
+  if ((<HTMLInputElement>event.target).value == "si")
+  {
+    this.textoDeRegistro = "EL usuairo se acaba de registrar";
+  }else{
+    this.textoDeRegistro = "No hay nadie registrado";
+  }
+
+}
+
+
+setUsuarioRegistrado(){
+  alert("El usuario se acaba de registrar");
+}
+
+  getEdad(){
     return this.edad;
   }
 
-  getEmpresa(value:String) {
-
-  }
-  
-  getRegistroUsuario(){
-    this.usuRegistrado = false;
+  llamaEmpresa(value:string){
+this.empresa = value;
   }
 
-  setUsuarioRegistrado(event:Event){
-    //alert("El usuario se acaba de registrar");
-    if((<HTMLInputElement>event.target).value=="si") {
-      this.textoDeRegistro = "El usuario se acaba de registrar"
-    } else {
-      this.textoDeRegistro = "No hay nadie registrado"
-    }
-  }
 
-  constructor() {}
-  
 }
