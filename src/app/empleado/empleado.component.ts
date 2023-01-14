@@ -1,6 +1,7 @@
 import { isIdentifier } from '@angular/compiler';
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-empleado',
   templateUrl: './empleado.component.html',
@@ -28,6 +29,11 @@ getRegistroUsuario(value :boolean){
   else {
     this.textoDeRegistro = this.textoDeRegistro;
   }
+}
+
+cambiaNombre(event: Event)
+{
+  this.nombre = (<HTMLInputElement>event.target).value;
 }
 
 

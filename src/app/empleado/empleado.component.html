@@ -15,15 +15,17 @@
 <br/>
 
 <p>{{textoDeRegistro}}</p>
-
-<br/>
-
 <p>Registrado: <input type="checkbox" id="registro" [checked]="usuRegistrado" (click)="getRegistroUsuario(usuRegistrado)" ></p>
 
 <p >{{usuRegistrado}}</p>
 
+
+<p>Nombre usuario:  <input type="text" [(ngModel)]="nombre"></p>
+<input type="text" (input)="cambiaNombre($event)" >
+
+
 <!-- {{getRegistroUsuario()}} -->
 
 <p>Registrado: <input type="radio" value="si" name="nRegistro" id="registros" [checked]="usuRegistrado" (click)="getRegistroOption($event)" ></p>
-<p>No registrado: <input type="radio" value="no" name="nRegistro" (click)="getRegistroOption($event)">  </p>
+<p>No registrado: <input type="radio" value="no" name="nRegistro" [checked]="!usuRegistrado" (click)="getRegistroOption($event)">  </p>
 
